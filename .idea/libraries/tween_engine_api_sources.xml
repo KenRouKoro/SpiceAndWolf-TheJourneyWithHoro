@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="tween-engine-api-sources">
+    <CLASSES>
+      <root url="jar://E:/JAVA/Swing动画系统/tween-engine-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://E:/JAVA/Swing动画系统/tween-engine-api-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
