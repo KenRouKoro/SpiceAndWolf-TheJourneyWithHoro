@@ -1,15 +1,6 @@
 package indi.korostudio.saw.main;
 
-import indi.korostudio.saw.panel.AComponent;
 import indi.korostudio.saw.system.GameSystem;
-import indi.korostudio.saw.tool.Tool;
-import indi.korostudio.saw.tween.TweenImplements;
-import indi.korostudio.saw.tween.TweenSystem;
-import indi.korostudio.saw.tool.TweenTool;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 
 
 public class Main {

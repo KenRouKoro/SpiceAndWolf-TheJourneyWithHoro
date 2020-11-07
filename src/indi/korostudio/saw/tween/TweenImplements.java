@@ -1,7 +1,6 @@
 package indi.korostudio.saw.tween;
 
 import aurelienribon.tweenengine.TweenAccessor;
-import indi.korostudio.saw.panel.AComponent;
 import indi.korostudio.saw.panel.AlphaPanel;
 
 import java.awt.*;

@@ -1,4 +1,6 @@
-package indi.korostudio.saw.panel;
+package indi.korostudio.saw.panel.component;
+
+import indi.korostudio.saw.panel.AlphaPanel;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,6 @@
 package indi.korostudio.saw.panel.scene.logo;
 
 import indi.korostudio.saw.data.Data;
-import indi.korostudio.saw.panel.AComponent;
 import indi.korostudio.saw.panel.scene.Scene;
 import indi.korostudio.saw.tool.Tool;
 import indi.korostudio.saw.tool.TweenTool;
@@ -10,14 +9,9 @@ import indi.korostudio.saw.tween.TweenImplements;
 import indi.korostudio.saw.tween.TweenListener;
 import indi.korostudio.saw.tween.TweenSystem;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LogoScene extends Scene {
     protected ArrayList<BufferedImage>images=new ArrayList<>();
