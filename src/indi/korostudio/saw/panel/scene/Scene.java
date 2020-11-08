@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 abstract public class Scene extends JPanel implements AlphaPanel {
 
     public static final float Alpha=1f;
+
     protected float alpha=1f;
 
     public  Scene(){
@@ -19,6 +20,10 @@ abstract public class Scene extends JPanel implements AlphaPanel {
     abstract public void out();
     public void setAlpha(float alpha){
         this.alpha=alpha;
+        for (Component component: getComponents()){
+            AlphaPanel alphaPanel=(AlphaPanel) component;
+            alphaPanel.setAlpha(alpha);
+        }
     }
     @Override
     public void paint(Graphics g) {

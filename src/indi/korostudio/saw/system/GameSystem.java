@@ -5,28 +5,34 @@ import indi.korostudio.saw.frame.MainFrame;
 import indi.korostudio.saw.panel.ScenePanel;
 import indi.korostudio.saw.panel.scene.load.LoadScene;
 import indi.korostudio.saw.panel.scene.logo.LogoScene;
+import indi.korostudio.saw.panel.scene.main.MainScene;
 
 public class GameSystem {
 
     protected MainFrame frame;
     protected boolean starting=false;
+    static public String now="";
     //初始化
     public void load(){
         Data.mainFrame=frame=new MainFrame();
         Data.scenePanel =new ScenePanel();
-        Data.loadScene =new LoadScene();
-        Data.loadScene.load();
-        Data.logoScene =new LogoScene();
+        Data.sceneMap.put("Load",new LoadScene());
+        Data.sceneMap.get("Load").load();
         start();
+    }
+    public void afterLoad(){
+        Data.sceneMap.put("Main",new MainScene());
+        Data.sceneMap.put("Logo",new LogoScene());
     }
 
     //相当于脚本了XD
     protected void start(){
         starting=true;
         frame.setVisible(true);
-        showLoading();
-        Data.loadScene.end();
-        Data.logoScene.start();
+        Data.sceneMap.get("Load").in();
+        afterLoad();
+        Data.sceneMap.get("Load").out();
+        Data.sceneMap.get("Logo").in();
     }
 
 
@@ -34,10 +40,6 @@ public class GameSystem {
         Data.w=w;
         Data.h=h;
         frame.reSize();
-    }
-    static public void showLoading(){
-        //Data.scenePanel.add(Data.loadPanel);
-        Data.loadScene.start();
     }
 
     public boolean isStarting() {

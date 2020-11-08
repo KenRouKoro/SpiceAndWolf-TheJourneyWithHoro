@@ -7,6 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class TweenActuator {
     final static public int Synchronization=0;
     final static public int Sequential=1;
+
     protected TweenActuator tweenActuator= this;
     protected int mode=Sequential;
     protected CopyOnWriteArrayList<TweenSystem> tweenSystems=new CopyOnWriteArrayList<>();

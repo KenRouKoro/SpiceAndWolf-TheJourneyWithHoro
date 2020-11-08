@@ -19,10 +19,11 @@ import javafx.scene.media.MediaPlayer;
  *类描述:
  */
 public class MusicPlayer {
-    final CountDownLatch latch = new CountDownLatch(1);
-	Media musicMedia;
-	MediaPlayer musicMediaPlayer=null;
-	String URI;
+    final protected CountDownLatch latch = new CountDownLatch(1);
+
+	protected Media musicMedia;
+	protected MediaPlayer musicMediaPlayer=null;
+	protected String URI;
     /**
      * 
      */

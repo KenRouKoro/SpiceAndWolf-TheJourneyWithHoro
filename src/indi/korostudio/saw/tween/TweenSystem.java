@@ -15,16 +15,18 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class TweenSystem {
-    TweenManager tweenManager;
-    CopyOnWriteArrayList<TweenListener>tweenListeners=new CopyOnWriteArrayList<>();
-    TweenEquation tweenMode= Cubic.INOUT;
-    Component component;
-    Thread runThread;
+    protected TweenManager tweenManager;
+    protected CopyOnWriteArrayList<TweenListener>tweenListeners=new CopyOnWriteArrayList<>();
+    protected TweenEquation tweenMode= Cubic.INOUT;
+    protected Component component;
+    protected Thread runThread;
     protected boolean again=false;
-    float time=2f;
-    int mode=TweenImplements.XY;
-    boolean running = false;
-    float []arg;
+    protected float time=2f;
+    protected int mode=TweenImplements.XY;
+    protected boolean running = false;
+    protected float []arg;
+    protected Runnable runnable ;
+
     class RunThread implements  Runnable{
         public void run() {
             long lastMillis = System.currentTimeMillis();
@@ -39,6 +41,7 @@ public class TweenSystem {
                         Thread.sleep(sleep);
                     }
                     catch (InterruptedException ex) {
+                        ex.printStackTrace();
                     }
                 }
                 long deltaNewMillis = System.currentTimeMillis();
@@ -63,37 +66,43 @@ public class TweenSystem {
                 tweenListener.finish();
             }
         }};
-    Runnable runnable ;
 
-    public void setArg(float... arg){
+    public TweenSystem setArg(float... arg){
 
         this.arg=arg;
-
+        return this;
     }
 
-    public void setTime(float time) {
+    public TweenSystem setTime(float time) {
         this.time = time;
+        return  this;
     }
 
     public boolean isRunning() {
         return running;
     }
 
-    public void start(){
+    public TweenSystem start(){
         load();
         for (TweenListener tweenListener:tweenListeners){
             tweenListener.start();
         }
         runThread.start();
+        return this;
     }
-    public void setTweenMode(TweenEquation mode){
+    public TweenSystem setTweenMode(TweenEquation mode){
         this.tweenMode=mode;
+        return this;
     }
-    public void setComponent(Component component){
+
+    public TweenSystem setComponent(Component component){
         this.component=component;
+        return this;
     }
-    public void setMode(int mode){
+
+    public TweenSystem setMode(int mode){
         this.mode=mode;
+        return this;
     }
 
     public void stop(){
@@ -113,12 +122,14 @@ public class TweenSystem {
         }
     }
 
-    public void addTweenListener(TweenListener... tweenListeners){
+    public TweenSystem addTweenListener(TweenListener... tweenListeners){
         this.tweenListeners.addAll(Arrays.asList(tweenListeners));
+        return this;
     }
 
-    public void removeTweenListener(TweenListener... tweenListeners){
+    public TweenSystem removeTweenListener(TweenListener... tweenListeners){
         this.tweenListeners.removeAll(Arrays.asList(tweenListeners));
+        return this;
     }
 
 

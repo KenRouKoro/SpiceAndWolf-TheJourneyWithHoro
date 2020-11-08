@@ -25,12 +25,28 @@ public class LoadScene extends Scene {
 
     @Override
     public void in() {
-
+        try {
+            Data.scenePanel.remove(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        setAlpha(0f);
+        in = TweenTool.SimpleTween(this,4f, TweenImplements.ALPHA,1f);
+        out = TweenTool.SimpleTween(this,4f, TweenImplements.ALPHA,0f);
+        inout = TweenTool.SimpleActuator(in,out);
+        inout.setLoop(true);
+        reImage();
+        Data.scenePanel.add(this);
+        this.setVisible(true);
+        inout.start();
     }
 
     @Override
     public void out() {
-
+        Data.scenePanel.remove(this);
+        inout.stop();
+        setVisible(false);
+        setAlpha(1f);
     }
 
     public void load(){
@@ -57,29 +73,5 @@ public class LoadScene extends Scene {
         g2d.setFont(font);
         //g2d.drawString("Loading...",100,100);
         g2d.drawImage(strImage,getWidth()-200,getHeight()-50,null);
-    }
-
-    public void start(){
-        try {
-            Data.scenePanel.remove(this);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        setAlpha(0f);
-        in = TweenTool.SimpleTween(this,4, TweenImplements.ALPHA,1f);
-        out = TweenTool.SimpleTween(this,4, TweenImplements.ALPHA,0f);
-        inout = TweenTool.SimpleActuator(in,out);
-        inout.setLoop(true);
-        reImage();
-        Data.scenePanel.add(this);
-        this.setVisible(true);
-        inout.start();
-    }
-
-    public void end(){
-        Data.scenePanel.remove(this);
-        inout.stop();
-        setVisible(false);
-        setAlpha(1f);
     }
 }

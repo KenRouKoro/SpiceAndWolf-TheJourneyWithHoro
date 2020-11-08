@@ -2,12 +2,14 @@ package indi.korostudio.saw.data;
 
 import indi.korostudio.saw.frame.MainFrame;
 import indi.korostudio.saw.panel.ScenePanel;
+import indi.korostudio.saw.panel.scene.Scene;
 import indi.korostudio.saw.panel.scene.load.LoadScene;
 import indi.korostudio.saw.panel.scene.logo.LogoScene;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Data {
     public static int w=1920,h=1080;
@@ -17,8 +19,10 @@ public class Data {
     public static Dimension mainDimension=new Dimension(w,h);
     public static Rectangle mainRectangle=new Rectangle(0,0,mainDimension.width,mainDimension.height);
     public static ScenePanel scenePanel;
-    public static LoadScene loadScene;
-    public static LogoScene logoScene;
+    //public static LoadScene loadScene;
+    //public static LogoScene logoScene;
+    public static ConcurrentHashMap<String,Scene> sceneMap=new ConcurrentHashMap<String,Scene>();
+
     public static boolean running=true;
     public static int fps=60;
     public static boolean fullScreen=true;

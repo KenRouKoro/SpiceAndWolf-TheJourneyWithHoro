@@ -8,9 +8,11 @@ import java.awt.*;
 public class AComponent extends JPanel implements AlphaPanel {
     public static final float Alpha=1f;
     protected float alpha=1f;
+
     public void setAlpha(float alpha){
         this.alpha=alpha;
     }
+
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d=(Graphics2D)g;

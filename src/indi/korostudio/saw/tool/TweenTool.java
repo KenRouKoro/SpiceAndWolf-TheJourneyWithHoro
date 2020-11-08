@@ -6,7 +6,7 @@ import indi.korostudio.saw.tween.TweenSystem;
 import java.awt.*;
 
 public class TweenTool {
-    final static public TweenSystem SimpleTween(Component component, int time, int mode, float...arg){
+    final static public TweenSystem SimpleTween(Component component, float time, int mode, float...arg){
         TweenSystem tweenSystem=new TweenSystem();
         tweenSystem.setComponent(component);
         tweenSystem.setMode(mode);

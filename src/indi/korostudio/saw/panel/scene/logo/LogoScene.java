@@ -19,14 +19,53 @@ public class LogoScene extends Scene {
     protected TweenActuator inout;
     protected LogoScene logoScene=this;
 
+    public LogoScene(){
+        load();
+    }
+
     @Override
     public void in() {
+        in = TweenTool.SimpleTween(this,5f,TweenImplements.ALPHA,1f);
 
+        out = TweenTool.SimpleTween(this,5f,TweenImplements.ALPHA,0f).addTweenListener(new TweenListener() {
+            @Override
+            public void start() {
+
+            }
+
+            @Override
+            public void finish() {
+                Data.scenePanel.remove(logoScene);
+                out();
+            }
+
+            @Override
+            public void pause() {
+
+            }
+
+            @Override
+            public void stop() {
+
+            }
+        });;
+
+        inout = TweenTool.SimpleActuator(in,out);
+        try {
+            Data.scenePanel.remove(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        this.setAlpha(0f);
+        Data.scenePanel.add(this);
+        this.setVisible(true);
+
+        inout.start();
     }
 
     @Override
     public void out() {
-
+        Data.sceneMap.get("Main").in();
     }
 
     public void load(){
@@ -45,43 +84,7 @@ public class LogoScene extends Scene {
         Graphics2D g2d=(Graphics2D)g;
         g2d.drawImage(images.get(0),(getWidth()-getHeight())/2,0,getHeight(),getHeight(),null);
     }
-    public void start(){
-        load();
-        in = TweenTool.SimpleTween(this,5,TweenImplements.ALPHA,1f);
-        out = TweenTool.SimpleTween(this,5,TweenImplements.ALPHA,0f);
-        inout = TweenTool.SimpleActuator(in,out);
-        try {
-            Data.scenePanel.remove(this);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        this.setAlpha(0f);
-        Data.scenePanel.add(this);
-        this.setVisible(true);
-        out.addTweenListener(new TweenListener() {
-            @Override
-            public void start() {
 
-            }
-
-            @Override
-            public void finish() {
-            Data.scenePanel.remove(logoScene);
-            }
-
-            @Override
-            public void pause() {
-
-            }
-
-            @Override
-            public void stop() {
-
-            }
-        });
-
-        inout.start();
-    }
 
 
 }

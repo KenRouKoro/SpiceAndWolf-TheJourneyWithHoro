@@ -13,8 +13,9 @@ public class MainFrame extends JFrame {
     protected MainFrame mainFrame=this;
     protected JPanel panel=new JPanel();
     protected Thread thread;
-    int fps=0;
-    Timer timer = new Timer("FPS");
+    protected int fps=0;
+    protected Timer timer = new Timer("FPS");
+
     public MainFrame(){
         //panel.setSize(Data.w,Data.h);
         panel.setPreferredSize(Data.mainDimension);
@@ -74,6 +75,7 @@ public class MainFrame extends JFrame {
     public void reSize(){
         setSize(Data.w,Data.h);
     }
+
     protected class Loop implements Runnable{
         @Override
         public void run() {

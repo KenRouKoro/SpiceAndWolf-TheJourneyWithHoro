@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class ImagePanel extends AComponent{
     protected BufferedImage image;
+
     public ImagePanel(){
 
     }
