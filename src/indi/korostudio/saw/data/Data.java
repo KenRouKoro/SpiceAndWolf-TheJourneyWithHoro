@@ -23,7 +23,7 @@ public class Data {
 
     public static boolean running=true;
     public static int fps=60;
-    public static boolean fullScreen=true;
+    public static boolean fullScreen=false;
     //获取res文件
     final static public URL getRes(String file){
         return Data.class.getResource("/res/"+file);

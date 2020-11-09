@@ -14,24 +14,36 @@ import java.awt.image.BufferedImage;
 
 public class MainScene extends Scene {
     protected BufferedImage mainBackground,rightMenu,buttonBack,title;
-    protected ImagePanel mainBackgroundPanel;
+    protected ImagePanel mainBackgroundPanel,mainMenuPanel;
     protected TweenSystem inTw,outTw;
     protected TweenListener outIm;
     protected MainScene mainScene=this;
+    protected Color mainMenuBackground = new Color(114,83,52,50);
 
     public MainScene(){
         load();
     }
 
-    @Override
-    public void load() {
+    private void newThis(){
         setAlpha(0f);
         setSize(Data.mainDimension);
+    }
+
+    private void newPanels(){
         mainBackgroundPanel=new ImagePanel(mainBackground = Tool.loadImage("/image/main/MainBackground.jpg"));
         mainBackgroundPanel.setSize(Data.mainDimension);
-        System.out.println(mainBackgroundPanel);
-        add(mainBackgroundPanel);
 
+        mainMenuPanel=new ImagePanel(Tool.fillRect((int)(getWidth()*0.2),getHeight(),mainMenuBackground));
+        mainMenuPanel.setBounds((int)(Data.mainDimension.getWidth()*0.8),0,(int)(Data.mainDimension.getWidth()*0.2), (int)Data.mainDimension.getHeight());
+
+    }
+
+    private void addPanels(){
+        add(mainMenuPanel);
+        add(mainBackgroundPanel);
+    }
+
+    private void newTweens(){
         inTw = TweenTool.SimpleTween(this,4f,TweenImplements.ALPHA,1f);
 
         outTw = TweenTool.SimpleTween(this,4f,TweenImplements.ALPHA,0f).addTweenListener(outIm = new TweenListener() {
@@ -56,8 +68,14 @@ public class MainScene extends Scene {
 
             }
         });
+    }
 
-
+    @Override
+    public void load() {
+        newThis();
+        newPanels();
+        newTweens();
+        addPanels();
     }
 
     @Override

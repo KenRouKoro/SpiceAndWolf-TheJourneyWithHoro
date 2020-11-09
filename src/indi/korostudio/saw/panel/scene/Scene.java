@@ -13,7 +13,7 @@ abstract public class Scene extends JPanel implements AlphaPanel {
     protected float alpha=1f;
 
     public  Scene(){
-        this.setOpaque(false);
+        setOpaque(false);
     }
     abstract public void load();
     abstract public void in();

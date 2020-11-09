@@ -9,6 +9,10 @@ public class AComponent extends JPanel implements AlphaPanel {
     public static final float Alpha=1f;
     protected float alpha=1f;
 
+    public AComponent(){
+        setOpaque(false);
+    }
+
     public void setAlpha(float alpha){
         this.alpha=alpha;
     }

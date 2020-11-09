@@ -134,9 +134,13 @@ public class TweenSystem {
 
 
     protected void load (){
-        Tween.registerAccessor(Component.class, new TweenImplements());
-        tweenManager=new TweenManager();
-        Tween.to(component, mode, time).ease(Cubic.INOUT).target(arg ).start(tweenManager);
-        runThread=new Thread(new RunThread());
+        try {
+            Tween.registerAccessor(Component.class, new TweenImplements());
+            tweenManager = new TweenManager();
+            Tween.to(component, mode, time).ease(Cubic.INOUT).target(arg).start(tweenManager);
+            runThread = new Thread(new RunThread());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

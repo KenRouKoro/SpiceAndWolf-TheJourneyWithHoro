@@ -7,7 +7,7 @@ import indi.korostudio.saw.panel.scene.load.LoadScene;
 import indi.korostudio.saw.panel.scene.logo.LogoScene;
 import indi.korostudio.saw.panel.scene.main.MainScene;
 
-public class GameSystem {
+public class GameStartup {
 
     protected MainFrame frame;
     protected boolean starting=false;

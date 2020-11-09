@@ -50,22 +50,17 @@ public class Tool {
         return bufferedImage;
     }
     static public int[] count(String str) {
-        /**中文字符 */
+        /*中文字符 */
         int chCharacter = 0;
-
-        /**英文字符 */
+        /*英文字符 */
         int enCharacter = 0;
-
-        /**空格 */
+        /*空格 */
         int spaceCharacter = 0;
-
-        /**数字 */
+        /*数字 */
         int numberCharacter = 0;
-
-        /**其他字符 */
+        /*其他字符 */
         int otherCharacter = 0;
         if (null == str || str.equals("")) {
-            System.out.println("字符串为空");
             return null;
         }
 
@@ -83,14 +78,6 @@ public class Tool {
                 otherCharacter ++;
             }
         }
-        /*
-        System.out.println("字符串:" + str + "");
-        System.out.println("中文字符有:" + chCharacter);
-        System.out.println("英文字符有:" + enCharacter);
-        System.out.println("数字有:" + numberCharacter);
-        System.out.println("空格有:" + spaceCharacter);
-        System.out.println("其他字符有:" + otherCharacter);
-        */
          return new int[]{chCharacter, enCharacter, numberCharacter, spaceCharacter, otherCharacter};
     }
     static public boolean isChinese(char ch) {
