@@ -64,7 +64,6 @@ public class TweenImplements implements TweenAccessor<Component> {
 
     @Override
     public void setValues(Component target, int tweenType, float[] newValues) {
-        System.out.println(newValues[0]);
         switch (tweenType) {
             case X:
                 target.setLocation(Math.round(newValues[0]), target.getY());

@@ -23,6 +23,13 @@ public class Tool {
         }
         return  bufferedImage;
     }
+    static final public BufferedImage fillRect(int width,int height,Color color){
+        BufferedImage bufferedImage=new BufferedImage(width,height,BufferedImage.TYPE_4BYTE_ABGR);
+        Graphics2D g2d=(Graphics2D) bufferedImage.getGraphics();
+        g2d.setColor(color);
+        g2d.fillRect(0,0,width,height);
+        return bufferedImage;
+    }
     static public BufferedImage stringImage(Color color,Font font,String string){
         int i[]=count(string);
         int width=i[0]*font.getSize()+(i[1]+i[2]+i[3]+i[4])*font.getSize()/2;

@@ -3,8 +3,6 @@ package indi.korostudio.saw.data;
 import indi.korostudio.saw.frame.MainFrame;
 import indi.korostudio.saw.panel.ScenePanel;
 import indi.korostudio.saw.panel.scene.Scene;
-import indi.korostudio.saw.panel.scene.load.LoadScene;
-import indi.korostudio.saw.panel.scene.logo.LogoScene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +10,7 @@ import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Data {
-    public static int w=1920,h=1080;
+    public static int w=1280,h=720;
     public static MainFrame mainFrame;
     public static String title="Spice And Wolf - The Journey With Horo";
     public static ImageIcon icon;
@@ -31,7 +29,7 @@ public class Data {
         return Data.class.getResource("/res/"+file);
     }
 
-    public static void resize(int w,int h){
+    public static void resize(int w,int h){ 
         mainDimension.setSize(w,h);
         mainRectangle.setSize(mainDimension);
     }
