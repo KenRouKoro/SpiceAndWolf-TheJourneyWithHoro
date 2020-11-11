@@ -15,11 +15,13 @@ public class CMDAnalysis {
         }else{
             key=cmd.trim();
         }
+        key=key.toLowerCase();
         switch (key){
             case "show":
                 show(todo);
                 break;
             case "reload":
+                reload(todo);
                 break;
             case "exit":
                 exit();
@@ -27,8 +29,17 @@ public class CMDAnalysis {
         }
     }
 
+    protected void reload(String str){
+        if (str==null|!Data.sceneMap.containsKey(str)){
+
+        }else{
+            Scene scene =Data.sceneMap.get(str);
+            scene.load();
+        }
+    }
+
     protected void show(String str){
-        if (str==null){
+        if (str==null|!Data.sceneMap.containsKey(str)){
 
         }else{
             Scene scene =Data.sceneMap.get(str);

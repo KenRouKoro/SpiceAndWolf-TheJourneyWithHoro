@@ -65,7 +65,6 @@ public class LoadScene extends Scene {
 
     @Override
     public void out() {
-        System.out.println("out?");
         inout.stop();
         lastout.start();
     }

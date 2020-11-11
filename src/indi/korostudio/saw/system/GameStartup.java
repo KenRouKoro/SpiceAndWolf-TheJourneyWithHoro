@@ -35,7 +35,7 @@ public class GameStartup {
                 frame.setVisible(true);
                 CMD.getCMD().run("show Load");
                 afterLoad();
-                CMD.getCMD().run("show Logo");
+                //CMD.getCMD().run("show Logo");
             }
         });
         runThread.start();

@@ -19,6 +19,7 @@ public class CMD {
             @Override
             public void run() {
                 scan = new Scanner(System.in);
+                scan.useDelimiter("\n");
                 while (true){
                     String str=scan.next();
                     getCMD().run(str);
