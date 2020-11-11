@@ -17,9 +17,9 @@ public class Data {
     public static Dimension mainDimension=new Dimension(w,h);
     public static Rectangle mainRectangle=new Rectangle(0,0,mainDimension.width,mainDimension.height);
     public static ScenePanel scenePanel;
-    //public static LoadScene loadScene;
-    //public static LogoScene logoScene;
     public static ConcurrentHashMap<String,Scene> sceneMap=new ConcurrentHashMap<String,Scene>();
+    public static String nowScene =null;
+
 
     public static boolean running=true;
     public static int fps=60;

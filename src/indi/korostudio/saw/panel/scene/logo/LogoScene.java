@@ -2,6 +2,7 @@ package indi.korostudio.saw.panel.scene.logo;
 
 import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.panel.scene.Scene;
+import indi.korostudio.saw.system.CMD;
 import indi.korostudio.saw.tool.Tool;
 import indi.korostudio.saw.tool.TweenTool;
 import indi.korostudio.saw.tween.TweenActuator;
@@ -36,7 +37,7 @@ public class LogoScene extends Scene {
             @Override
             public void finish() {
                 Data.scenePanel.remove(logoScene);
-                out();
+                next();
             }
 
             @Override
@@ -48,16 +49,10 @@ public class LogoScene extends Scene {
             public void stop() {
 
             }
-        });;
+        });
 
         inout = TweenTool.SimpleActuator(in,out);
-        try {
-            Data.scenePanel.remove(this);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         this.setAlpha(0f);
-        Data.scenePanel.add(this);
         this.setVisible(true);
 
         inout.start();
@@ -65,7 +60,11 @@ public class LogoScene extends Scene {
 
     @Override
     public void out() {
-        Data.sceneMap.get("Main").in();
+        doNextScene();
+    }
+
+    protected void next(){
+        CMD.getCMD().run("show Main");
     }
 
     public void load(){
@@ -73,7 +72,6 @@ public class LogoScene extends Scene {
         setVisible(false);
         setAlpha(0f);
         this.setLayout(null);
-            //images.add(ImageIO.read(Data.getRes("image/Logo/科洛工作室.png")));
         images.add(Tool.loadImage("/image/Logo/科洛工作室.png"));
     }
 

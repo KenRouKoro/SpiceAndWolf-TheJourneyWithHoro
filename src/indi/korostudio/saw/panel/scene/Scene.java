@@ -1,5 +1,6 @@
 package indi.korostudio.saw.panel.scene;
 
+import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.panel.AlphaPanel;
 
 import javax.swing.*;
@@ -12,12 +13,25 @@ abstract public class Scene extends JPanel implements AlphaPanel {
 
     protected float alpha=1f;
 
+    Scene nextScene=null;
+
     public  Scene(){
         setOpaque(false);
     }
     abstract public void load();
     abstract public void in();
     abstract public void out();
+
+    protected void doNextScene(){
+        Data.scenePanel.remove(this);
+        Data.scenePanel.add(nextScene);
+        nextScene.in();
+    }
+
+    public void setNextScene(Scene nextScene) {
+        this.nextScene = nextScene;
+    }
+
     public void setAlpha(float alpha){
         this.alpha=alpha;
         for (Component component: getComponents()){

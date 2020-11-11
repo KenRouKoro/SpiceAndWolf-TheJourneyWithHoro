@@ -55,7 +55,7 @@ public class MainScene extends Scene {
 
             @Override
             public void finish() {
-                Data.scenePanel.remove(mainScene);
+                doNextScene();
             }
 
             @Override

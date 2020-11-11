@@ -12,6 +12,7 @@ public class GameStartup {
     protected MainFrame frame;
     protected boolean starting=false;
     static public String now="";
+    protected Thread runThread;
     //初始化
     public void load(){
         Data.mainFrame=frame=new MainFrame();
@@ -27,12 +28,17 @@ public class GameStartup {
 
     //相当于脚本了XD
     protected void start(){
-        starting=true;
-        frame.setVisible(true);
-        Data.sceneMap.get("Load").in();
-        afterLoad();
-        Data.sceneMap.get("Load").out();
-        Data.sceneMap.get("Logo").in();
+        runThread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                starting=true;
+                frame.setVisible(true);
+                CMD.getCMD().run("show Load");
+                afterLoad();
+                CMD.getCMD().run("show Logo");
+            }
+        });
+        runThread.start();
     }
 
 

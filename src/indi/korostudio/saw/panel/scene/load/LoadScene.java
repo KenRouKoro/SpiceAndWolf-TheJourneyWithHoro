@@ -7,6 +7,7 @@ import indi.korostudio.saw.tool.Tool;
 import indi.korostudio.saw.tool.TweenTool;
 import indi.korostudio.saw.tween.TweenActuator;
 import indi.korostudio.saw.tween.TweenImplements;
+import indi.korostudio.saw.tween.TweenListener;
 import indi.korostudio.saw.tween.TweenSystem;
 
 import java.awt.*;
@@ -15,38 +16,58 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LoadScene extends Scene {
-    protected TweenSystem in,out;
+    protected TweenSystem in,out,lastout;
     protected TweenActuator inout;
     protected CopyOnWriteArrayList<BufferedImage> images=new CopyOnWriteArrayList<>();
     protected int nowImage=1;
     protected Random r = new Random();
     protected Font font;
     protected BufferedImage strImage;
+    protected LoadScene loadScene=this;
 
     @Override
     public void in() {
-        try {
-            Data.scenePanel.remove(this);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         setAlpha(0f);
         in = TweenTool.SimpleTween(this,4f, TweenImplements.ALPHA,1f);
         out = TweenTool.SimpleTween(this,4f, TweenImplements.ALPHA,0f);
+        lastout = TweenTool.SimpleTween(this,4f,TweenImplements.ALPHA,0f);
         inout = TweenTool.SimpleActuator(in,out);
         inout.setLoop(true);
         reImage();
         Data.scenePanel.add(this);
         this.setVisible(true);
+        lastout.addTweenListener(new TweenListener() {
+            @Override
+            public void start() {
+
+            }
+
+            @Override
+            public void finish() {
+                setVisible(false);
+                setAlpha(1f);
+                Data.scenePanel.remove(loadScene);
+                loadScene.doNextScene();
+            }
+
+            @Override
+            public void pause() {
+
+            }
+
+            @Override
+            public void stop() {
+
+            }
+        });
         inout.start();
     }
 
     @Override
     public void out() {
-        Data.scenePanel.remove(this);
+        System.out.println("out?");
         inout.stop();
-        setVisible(false);
-        setAlpha(1f);
+        lastout.start();
     }
 
     public void load(){

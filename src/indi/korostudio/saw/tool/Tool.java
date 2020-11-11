@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Tool {
     static public BufferedImage loadImage(String file){
-        System.out.println(Tool.class.getResource("/res"+file));
+        System.out.println("LOAD:"+Tool.class.getResource("/res"+file));
         URL url= Tool.class.getResource("/res"+file);
         BufferedImage bufferedImage= null;
         try {
