@@ -1,4 +1,4 @@
-package indi.korostudio.saw.system;
+package indi.korostudio.saw.system.cmd;
 
 import java.util.Scanner;
 import java.util.concurrent.LinkedBlockingQueue;

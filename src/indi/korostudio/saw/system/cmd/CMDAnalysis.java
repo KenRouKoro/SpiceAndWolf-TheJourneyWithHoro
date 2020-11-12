@@ -1,4 +1,4 @@
-package indi.korostudio.saw.system;
+package indi.korostudio.saw.system.cmd;
 
 import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.panel.scene.Scene;

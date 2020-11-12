@@ -132,7 +132,6 @@ public class TweenSystem {
         return this;
     }
 
-
     protected void load (){
         try {
             Tween.registerAccessor(Component.class, new TweenImplements());

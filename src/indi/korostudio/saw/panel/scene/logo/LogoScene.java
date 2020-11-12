@@ -2,7 +2,7 @@ package indi.korostudio.saw.panel.scene.logo;
 
 import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.panel.scene.Scene;
-import indi.korostudio.saw.system.CMD;
+import indi.korostudio.saw.system.cmd.CMD;
 import indi.korostudio.saw.tool.Tool;
 import indi.korostudio.saw.tool.TweenTool;
 import indi.korostudio.saw.tween.TweenActuator;

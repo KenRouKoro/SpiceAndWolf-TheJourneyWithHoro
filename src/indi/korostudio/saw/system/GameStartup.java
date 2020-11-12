@@ -6,6 +6,7 @@ import indi.korostudio.saw.panel.ScenePanel;
 import indi.korostudio.saw.panel.scene.load.LoadScene;
 import indi.korostudio.saw.panel.scene.logo.LogoScene;
 import indi.korostudio.saw.panel.scene.main.MainScene;
+import indi.korostudio.saw.system.cmd.CMD;
 
 public class GameStartup {
 
