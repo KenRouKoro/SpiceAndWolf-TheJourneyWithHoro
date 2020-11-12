@@ -14,7 +14,7 @@ public class Data {
     public static MainFrame mainFrame;
     public static String title="Spice And Wolf - The Journey With Horo";
     public static ImageIcon icon;
-    public static String iconFile;
+    public static String iconFile="/icon/icon.ico";
     public static Dimension mainDimension=new Dimension(w,h);
     public static Rectangle mainRectangle=new Rectangle(0,0,mainDimension.width,mainDimension.height);
     public static ScenePanel scenePanel;
