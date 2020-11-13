@@ -64,7 +64,7 @@ public class LogoScene extends Scene {
     }
 
     protected void next(){
-        CMD.getCMD().run("show Main");
+        CMD.getCMD().runCMD("show Main");
     }
 
     public void load(){

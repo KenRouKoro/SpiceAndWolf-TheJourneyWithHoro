@@ -14,6 +14,7 @@ public class TweenActuator {
     protected int nowTween=0;
     protected boolean loop=false;
     protected CopyOnWriteArrayList<TweenListener>tweenListeners=new CopyOnWriteArrayList<>();
+    protected boolean running=false;
 
     public void addTweenListener(TweenListener... tweenListeners){
         this.tweenListeners.addAll(Arrays.asList(tweenListeners));
@@ -71,6 +72,10 @@ public class TweenActuator {
                 tweenSystems.get(nowTween).start();
             else if (loop&(mode==Sequential)) {
                 tweenActuator.start();
+            }else if((mode==Sequential)){
+                running=false;
+            }else{
+                running=false;
             }
         }
 
@@ -84,8 +89,14 @@ public class TweenActuator {
 
         }
     }
+
+    public boolean isRunning() {
+        return running;
+    }
+
     public void start(){
         nowTween=0;
+        running=true;
         if (mode==Synchronization){
             for (TweenSystem tweenSystem:tweenSystems){
 
@@ -101,6 +112,7 @@ public class TweenActuator {
 
     public void stop(){
         loop=false;
+        running=false;
         if (mode==Synchronization){
             for (TweenSystem tweenSystem:tweenSystems){
                 tweenSystem.stop();

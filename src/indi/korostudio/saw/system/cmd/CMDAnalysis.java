@@ -2,8 +2,14 @@ package indi.korostudio.saw.system.cmd;
 
 import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.panel.scene.Scene;
+import indi.korostudio.saw.system.image.ImageBase;
+import indi.korostudio.saw.system.image.ImageLoader;
+import indi.korostudio.saw.system.json.JsonActuator;
+import org.apache.commons.io.FileUtils;
 
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class CMDAnalysis {
     public void run(String cmd){
@@ -26,7 +32,45 @@ public class CMDAnalysis {
             case "exit":
                 exit();
                 break;
+            case "reimage":
+                reImage();
+                break;
+            case "loadimage":
+                loadImage();
+                break;
+            case "nullscene":
+                nullScene();
+                break;
+            case "saveset":
+                saveset();
+                break;
         }
+    }
+
+    protected void saveset(){
+        try {
+            FileUtils.write(new File("setting.json"), JsonActuator.getSetting(),"UTF-8",false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void nullScene(){
+        Scene scene = Data.sceneMap.get(Data.nowScene);
+        Data.scenePanel.remove(scene);
+        Data.nowScene=null;
+        scene.setVisible(false);
+    }
+
+    protected void reImage(){
+        ImageBase.removeALL();
+        loadImage();//********
+    };
+
+    protected void loadImage(){
+        ImageLoader.firstLoad();
+        run("show Load");
+        ImageLoader.lastLoad();
     }
 
     protected void reload(String str){
@@ -43,7 +87,6 @@ public class CMDAnalysis {
 
         }else{
             Scene scene =Data.sceneMap.get(str);
-            Data.scenePanel.remove(scene);
             if(Data.nowScene ==null){
                 Data.scenePanel.add(scene);
                 Data.nowScene=str;

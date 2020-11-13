@@ -8,16 +8,33 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.LineMetrics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Tool {
     static public BufferedImage loadImage(String file){
         System.out.println("LOAD:"+Tool.class.getResource("/res"+file));
-        URL url= Tool.class.getResource("/res"+file);
+        URI uri=null;
+        try {
+            uri = Tool.class.getResource("/res"+file).toURI();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         BufferedImage bufferedImage= null;
         try {
-            bufferedImage = ImageIO.read(url);
+            bufferedImage = ImageIO.read(uri.toURL());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  bufferedImage;
+    }
+    static public BufferedImage loadImage(URI uri){
+        System.out.println("LOAD:"+uri);
+        BufferedImage bufferedImage= null;
+        try {
+            bufferedImage = ImageIO.read(uri.toURL());
         } catch (IOException e) {
             e.printStackTrace();
         }

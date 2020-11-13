@@ -22,7 +22,7 @@ public class CMD {
                 scan.useDelimiter("\n");
                 while (true){
                     String str=scan.next();
-                    getCMD().run(str);
+                    getCMD().runCMD(str);
                 }
             }
         });
@@ -34,7 +34,11 @@ public class CMD {
         return cmd;
     }
 
-    public void run(String cmd){
+    public static void run(String cmd){
+        getCMD().runCMD(cmd);
+    }
+
+    public void runCMD(String cmd){
         try {
             cmds.put(cmd);
         } catch (InterruptedException e) {

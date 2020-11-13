@@ -27,7 +27,7 @@ public class Data {
     public static boolean fullScreen=false;
     //获取res文件
     final static public URL getRes(String file){
-        return Data.class.getResource("/res/"+file);
+        return Data.class.getResource("/res"+file);
     }
 
     public static void resize(int w,int h){ 

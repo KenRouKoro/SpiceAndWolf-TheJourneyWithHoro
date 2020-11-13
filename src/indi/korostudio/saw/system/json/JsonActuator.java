@@ -1,7 +1,6 @@
 package indi.korostudio.saw.system.json;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sun.jndi.toolkit.url.UrlUtil;
 import indi.korostudio.saw.data.Data;
 import org.apache.commons.io.FileUtils;
 
@@ -10,6 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 
 public class JsonActuator {
+    public static void returnImageFile(){
+
+    }
     public static void SettingLoad(String json){
         JSONObject object = JSONObject.parseObject(json);
         int w,h,fps;

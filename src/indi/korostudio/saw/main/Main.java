@@ -1,6 +1,7 @@
 package indi.korostudio.saw.main;
 
 import indi.korostudio.saw.system.GameStartup;
+import indi.korostudio.saw.system.cmd.CMD;
 import indi.korostudio.saw.system.json.JsonActuator;
 import org.apache.commons.io.FileUtils;
 
@@ -19,10 +20,6 @@ public class Main {
         }
         GameStartup gameStartup =new GameStartup();
         gameStartup.load();
-        try {
-            FileUtils.write(new File("setting.json"), JsonActuator.getSetting(),"UTF-8",false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        CMD.run("saveset");
     }
 }

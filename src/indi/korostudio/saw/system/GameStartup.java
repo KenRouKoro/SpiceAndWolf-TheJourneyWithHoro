@@ -7,6 +7,7 @@ import indi.korostudio.saw.panel.scene.load.LoadScene;
 import indi.korostudio.saw.panel.scene.logo.LogoScene;
 import indi.korostudio.saw.panel.scene.main.MainScene;
 import indi.korostudio.saw.system.cmd.CMD;
+import indi.korostudio.saw.system.image.ImageLoader;
 
 public class GameStartup {
 
@@ -20,6 +21,7 @@ public class GameStartup {
         Data.scenePanel =new ScenePanel();
         Data.sceneMap.put("Load",new LoadScene());
         Data.sceneMap.get("Load").load();
+        ImageLoader.firstLoad();
         start();
     }
     public void afterLoad(){
@@ -34,7 +36,7 @@ public class GameStartup {
             public void run() {
                 starting=true;
                 frame.setVisible(true);
-                CMD.getCMD().run("show Load");
+                CMD.run("show Load");
                 afterLoad();
                 //CMD.getCMD().run("show Logo");
             }
