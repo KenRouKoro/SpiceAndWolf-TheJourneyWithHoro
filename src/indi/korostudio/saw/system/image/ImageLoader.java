@@ -20,8 +20,6 @@ public class ImageLoader {
     static public void lastLoad(){
         loadJSONImage(Data.getRes("/image/Logo/map.json"));
         loadJSONImage(Data.getRes("/image/main/map.json"));
-        loadJSONImage(Data.getRes("/image/立绘/map.json"));
-        removeJSONImage(Data.getRes("/image/立绘/map.json"));
     }
     static public void loadJSONImage(URI uri){
         File file=Paths.get(uri).toFile();

@@ -16,8 +16,7 @@ import java.awt.image.BufferedImage;
 public class MainScene extends Scene {
     protected BufferedImage mainBackground,rightMenu,buttonBack,title;
     protected ImagePanel mainBackgroundPanel,mainMenuPanel;
-    protected TweenSystem inTw,outTw;
-    protected TweenListener outIm;
+    protected TweenSystem inTw,outTw,menuIn;
     protected MainScene mainScene=this;
     protected Color mainMenuBackground = new Color(114,83,52,50);
 
@@ -35,7 +34,7 @@ public class MainScene extends Scene {
         mainBackgroundPanel.setSize(Data.mainDimension);
 
         mainMenuPanel=new ImagePanel(Tool.fillRect((int)(getWidth()*0.2),getHeight(),mainMenuBackground));
-        mainMenuPanel.setBounds((int)(Data.mainDimension.getWidth()*0.8),0,(int)(Data.mainDimension.getWidth()*0.2), (int)Data.mainDimension.getHeight());
+        mainMenuPanel.setBounds((int)(Data.mainDimension.getWidth()*1),0,(int)(Data.mainDimension.getWidth()*0.2), (int)Data.mainDimension.getHeight());
 
     }
 
@@ -45,9 +44,29 @@ public class MainScene extends Scene {
     }
 
     private void newTweens(){
-        inTw = TweenTool.SimpleTween(this,4f,TweenImplements.ALPHA,1f);
+        inTw = TweenTool.SimpleTween(this,4f,TweenImplements.ALPHA,1f).addTweenListener(new TweenListener() {
+            @Override
+            public void start() {
 
-        outTw = TweenTool.SimpleTween(this,4f,TweenImplements.ALPHA,0f).addTweenListener(outIm = new TweenListener() {
+            }
+
+            @Override
+            public void finish() {
+                doInInto();
+            }
+
+            @Override
+            public void pause() {
+
+            }
+
+            @Override
+            public void stop() {
+
+            }
+        });
+
+        outTw = TweenTool.SimpleTween(this,4f,TweenImplements.ALPHA,0f).addTweenListener(new TweenListener() {
 
             @Override
             public void start() {
@@ -69,6 +88,12 @@ public class MainScene extends Scene {
 
             }
         });
+
+        menuIn = TweenTool.SimpleTween(mainMenuPanel,2f,TweenImplements.X,(float) Data.mainDimension.getWidth()*0.8f);
+    }
+
+    protected void doInInto(){
+        menuIn.start();
     }
 
     @Override
