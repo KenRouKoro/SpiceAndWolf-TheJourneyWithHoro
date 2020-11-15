@@ -3,6 +3,7 @@ package indi.korostudio.saw.panel.scene.logo;
 import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.panel.scene.Scene;
 import indi.korostudio.saw.system.cmd.CMD;
+import indi.korostudio.saw.system.image.ImageBase;
 import indi.korostudio.saw.tool.Tool;
 import indi.korostudio.saw.tool.TweenTool;
 import indi.korostudio.saw.tween.TweenActuator;
@@ -15,7 +16,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class LogoScene extends Scene {
-    protected ArrayList<BufferedImage>images=new ArrayList<>();
+    protected BufferedImage image;
     protected TweenSystem in,out;
     protected TweenActuator inout;
     protected LogoScene logoScene=this;
@@ -72,7 +73,7 @@ public class LogoScene extends Scene {
         setVisible(false);
         setAlpha(0f);
         this.setLayout(null);
-        images.add(Tool.loadImage("/image/Logo/科洛工作室.png"));
+        image= ImageBase.get("logo-0");
     }
 
 
@@ -80,7 +81,7 @@ public class LogoScene extends Scene {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d=(Graphics2D)g;
-        g2d.drawImage(images.get(0),(getWidth()-getHeight())/2,0,getHeight(),getHeight(),null);
+        g2d.drawImage(image,(getWidth()-getHeight())/2,0,getHeight(),getHeight(),null);
     }
 
 

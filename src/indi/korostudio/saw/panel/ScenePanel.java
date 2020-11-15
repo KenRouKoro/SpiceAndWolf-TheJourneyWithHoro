@@ -14,7 +14,6 @@ public class ScenePanel extends JPanel {
             setBounds(Data.mainRectangle);
             setBackground(Color.white);
             setVisible(true);
-            System.out.println(this);
             Data.mainFrame.add(this);
             test= Tool.stringImage(Color.black,new Font("Times New Roman",Font.BOLD,30),"Test Ver");
         }

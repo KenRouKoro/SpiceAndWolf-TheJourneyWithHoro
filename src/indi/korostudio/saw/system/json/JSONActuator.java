@@ -1,17 +1,18 @@
 package indi.korostudio.saw.system.json;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import indi.korostudio.saw.data.Data;
+import indi.korostudio.saw.system.image.JSONImageFile;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class JsonActuator {
-    public static void returnImageFile(){
-
-    }
+public class JSONActuator {
     public static void SettingLoad(String json){
         JSONObject object = JSONObject.parseObject(json);
         int w,h,fps;
@@ -50,6 +51,15 @@ public class JsonActuator {
         object.put("title",title);
         object.put("icon",icon);
         return object.toJSONString();
+    }
+
+    public static ArrayList <JSONImageFile> getJSONImageFile(String json){
+        ArrayList <JSONImageFile> arrayList=new ArrayList<>();
+        JSONArray jsonArray=JSONArray.parseArray(json);
+        for(Object obj:jsonArray.toArray()){
+            arrayList.add(JSON.parseObject(((JSONObject)obj).toJSONString(),JSONImageFile.class));
+        }
+        return arrayList;
     }
 
 }

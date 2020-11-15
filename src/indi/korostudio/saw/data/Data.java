@@ -6,6 +6,8 @@ import indi.korostudio.saw.panel.scene.Scene;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -26,8 +28,13 @@ public class Data {
     public static int fps=60;
     public static boolean fullScreen=false;
     //获取res文件
-    final static public URL getRes(String file){
-        return Data.class.getResource("/res"+file);
+    final static public URI getRes(String file){
+        try {
+            return Data.class.getResource("/res"+file).toURI();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void resize(int w,int h){ 

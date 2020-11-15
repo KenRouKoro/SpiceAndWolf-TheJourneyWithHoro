@@ -7,15 +7,31 @@ import java.awt.*;
 import java.awt.font.FontRenderContext;
 import java.awt.font.LineMetrics;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Tool {
-    static public BufferedImage loadImage(String file){
-        System.out.println("LOAD:"+Tool.class.getResource("/res"+file));
+    static public BufferedImage loadImage(File file){
+        System.out.println("LOAD:"+file);
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage=ImageIO.read(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bufferedImage;
+    }
+    static public BufferedImage loadJarImage(String file){
+        try {
+            System.out.println("LOAD:"+ Paths.get(Tool.class.getResource("/res"+file).toURI()));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         URI uri=null;
         try {
             uri = Tool.class.getResource("/res"+file).toURI();
@@ -30,7 +46,7 @@ public class Tool {
         }
         return  bufferedImage;
     }
-    static public BufferedImage loadImage(URI uri){
+    static public BufferedImage loadJarImage(URI uri){
         System.out.println("LOAD:"+uri);
         BufferedImage bufferedImage= null;
         try {

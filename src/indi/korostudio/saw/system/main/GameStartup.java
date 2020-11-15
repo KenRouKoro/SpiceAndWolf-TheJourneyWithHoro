@@ -1,4 +1,4 @@
-package indi.korostudio.saw.system;
+package indi.korostudio.saw.system.main;
 
 import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.frame.MainFrame;
@@ -17,14 +17,15 @@ public class GameStartup {
     protected Thread runThread;
     //初始化
     public void load(){
+        ImageLoader.firstLoad();
         Data.mainFrame=frame=new MainFrame();
         Data.scenePanel =new ScenePanel();
         Data.sceneMap.put("Load",new LoadScene());
         Data.sceneMap.get("Load").load();
-        ImageLoader.firstLoad();
         start();
     }
     public void afterLoad(){
+        ImageLoader.lastLoad();
         Data.sceneMap.put("Main",new MainScene());
         Data.sceneMap.put("Logo",new LogoScene());
     }
@@ -38,7 +39,7 @@ public class GameStartup {
                 frame.setVisible(true);
                 CMD.run("show Load");
                 afterLoad();
-                //CMD.getCMD().run("show Logo");
+                CMD.getCMD().run("show Logo");
             }
         });
         runThread.start();

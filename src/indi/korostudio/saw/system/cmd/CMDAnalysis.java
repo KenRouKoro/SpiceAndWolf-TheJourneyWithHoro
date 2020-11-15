@@ -4,17 +4,16 @@ import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.panel.scene.Scene;
 import indi.korostudio.saw.system.image.ImageBase;
 import indi.korostudio.saw.system.image.ImageLoader;
-import indi.korostudio.saw.system.json.JsonActuator;
+import indi.korostudio.saw.system.json.JSONActuator;
 import org.apache.commons.io.FileUtils;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
 public class CMDAnalysis {
     public void run(String cmd){
         String key,todo=null;
-        System.out.println("RUN:"+cmd);
+        System.out.println("RUNCMD:"+cmd);
         if(cmd.contains(" ")) {
             key = cmd.substring(0, cmd.indexOf(" ")).trim();
             todo = cmd.substring(cmd.indexOf(" ") + 1).trim();
@@ -49,7 +48,7 @@ public class CMDAnalysis {
 
     protected void saveset(){
         try {
-            FileUtils.write(new File("setting.json"), JsonActuator.getSetting(),"UTF-8",false);
+            FileUtils.write(new File("setting.json"), JSONActuator.getSetting(),"UTF-8",false);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -3,6 +3,7 @@ package indi.korostudio.saw.panel.scene.main;
 import indi.korostudio.saw.data.Data;
 import indi.korostudio.saw.panel.component.ImagePanel;
 import indi.korostudio.saw.panel.scene.Scene;
+import indi.korostudio.saw.system.image.ImageBase;
 import indi.korostudio.saw.tool.Tool;
 import indi.korostudio.saw.tool.TweenTool;
 import indi.korostudio.saw.tween.TweenImplements;
@@ -30,7 +31,7 @@ public class MainScene extends Scene {
     }
 
     private void newPanels(){
-        mainBackgroundPanel=new ImagePanel(mainBackground = Tool.loadImage("/image/main/MainBackground.jpg"));
+        mainBackgroundPanel=new ImagePanel(mainBackground = ImageBase.get("main-0"));
         mainBackgroundPanel.setSize(Data.mainDimension);
 
         mainMenuPanel=new ImagePanel(Tool.fillRect((int)(getWidth()*0.2),getHeight(),mainMenuBackground));

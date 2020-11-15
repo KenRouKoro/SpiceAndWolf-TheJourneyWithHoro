@@ -23,6 +23,7 @@ public class LoadScene extends Scene {
     protected Font font;
     protected BufferedImage strImage;
     protected LoadScene loadScene=this;
+    protected BufferedImage image;
 
     @Override
     public void setVisible(boolean aFlag) {
@@ -89,13 +90,14 @@ public class LoadScene extends Scene {
 
     public void reImage(){
         nowImage=r.nextInt(8)+1;
+        image=ImageBase.get("Load-"+nowImage);
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d=(Graphics2D) g;
-        g2d.drawImage(ImageBase.get("Load-"+nowImage),getWidth()-350,getHeight()-150,null);
+        g2d.drawImage(image,getWidth()-350,getHeight()-150,null);
         g2d.setFont(font);
         g2d.drawImage(strImage,getWidth()-200,getHeight()-50,null);
     }

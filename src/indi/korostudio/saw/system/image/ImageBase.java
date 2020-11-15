@@ -28,17 +28,20 @@ public class ImageBase {
     }
 
     public static BufferedImage put(URI uri, String name){
-        BufferedImage bufferedImage= Tool.loadImage(uri);
+        System.out.println("BASEPUT:"+name);
+        BufferedImage bufferedImage= Tool.loadJarImage(uri);
         imageBase.putImage(bufferedImage,name);
         return bufferedImage;
     }
     public static BufferedImage put(String file,String name){
-        BufferedImage bufferedImage = Tool.loadImage(file);
+        System.out.println("BASEPUT:"+name);
+        BufferedImage bufferedImage = Tool.loadJarImage(file);
         imageBase.putImage(bufferedImage,name);
         return bufferedImage;
     }
 
     public static BufferedImage put(BufferedImage bufferedImage,String name){
+        System.out.println("BASEPUT:"+name);
         imageBase.putImage(bufferedImage,name);
         return bufferedImage;
     }
