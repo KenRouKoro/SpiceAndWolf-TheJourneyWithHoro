@@ -17,6 +17,7 @@ abstract public class Scene extends JPanel implements AlphaPanel {
 
     public  Scene(){
         setOpaque(false);
+        setLayout(null);
     }
     abstract public void load();
     abstract public void in();

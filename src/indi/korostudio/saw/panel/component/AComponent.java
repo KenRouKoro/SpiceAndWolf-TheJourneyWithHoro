@@ -11,6 +11,7 @@ public class AComponent extends JPanel implements AlphaPanel {
 
     public AComponent(){
         setOpaque(false);
+        setLayout(null);
     }
 
     public void setAlpha(float alpha){

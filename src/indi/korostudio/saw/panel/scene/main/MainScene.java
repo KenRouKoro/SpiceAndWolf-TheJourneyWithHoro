@@ -1,6 +1,7 @@
 package indi.korostudio.saw.panel.scene.main;
 
 import indi.korostudio.saw.data.Data;
+import indi.korostudio.saw.panel.component.ImageButton;
 import indi.korostudio.saw.panel.component.ImagePanel;
 import indi.korostudio.saw.panel.scene.Scene;
 import indi.korostudio.saw.system.image.ImageBase;
@@ -16,9 +17,10 @@ import java.awt.image.BufferedImage;
 public class MainScene extends Scene {
     protected BufferedImage mainBackground,rightMenu,buttonBack,title;
     protected ImagePanel mainBackgroundPanel,mainMenuPanel;
+    protected ImageButton testStarButton;
     protected TweenSystem inTw,outTw,menuIn;
     protected MainScene mainScene=this;
-    protected Color mainMenuBackground = new Color(114,83,52,50);
+    protected Color mainMenuBackground = new Color(139,126,102,150);
 
     public MainScene(){
         load();
@@ -33,14 +35,17 @@ public class MainScene extends Scene {
         mainBackgroundPanel=new ImagePanel(mainBackground = ImageBase.get("main-0"));
         mainBackgroundPanel.setSize(Data.mainDimension);
 
-        mainMenuPanel=new ImagePanel(Tool.fillRect((int)(getWidth()*0.2),getHeight(),mainMenuBackground));
-        mainMenuPanel.setBounds((int)(Data.mainDimension.getWidth()*1),0,(int)(Data.mainDimension.getWidth()*0.2), (int)Data.mainDimension.getHeight());
+        mainMenuPanel=new ImagePanel(Tool.fillRect((int)(getWidth()*0.15),getHeight(),mainMenuBackground));
+        mainMenuPanel.setBounds((int)(Data.mainDimension.getWidth()*1),0,(int)(Data.mainDimension.getWidth()*0.15), (int)Data.mainDimension.getHeight());
 
+        testStarButton=new ImageButton(Tool.fillRect((int)(getWidth()*0.125),(int)(getWidth()*0.125),new Color(189,176,152)),Tool.fillRect((int)(getWidth()*0.125),(int)(getWidth()*0.125),new Color(120,106,79)),Tool.fillRect((int)(getWidth()*0.125),(int)(getWidth()*0.125),new Color(139,126,102)));
+        testStarButton.setBounds((int)(getWidth()*0.0125),(int)((getHeight()-getWidth()*0.125*4)/5),(int)(getWidth()*0.125),(int)(getWidth()*0.125));
     }
 
     private void addPanels(){
         add(mainMenuPanel);
         add(mainBackgroundPanel);
+        mainMenuPanel.add(testStarButton);
     }
 
     private void newTweens(){
@@ -89,7 +94,7 @@ public class MainScene extends Scene {
             }
         });
 
-        menuIn = TweenTool.SimpleTween(mainMenuPanel,2f,TweenImplements.X,(float) Data.mainDimension.getWidth()*0.8f);
+        menuIn = TweenTool.SimpleTween(mainMenuPanel,2f,TweenImplements.X,(float) Data.mainDimension.getWidth()*0.85f);
     }
 
     protected void doInInto(){

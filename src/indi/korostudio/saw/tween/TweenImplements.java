@@ -18,7 +18,7 @@ public class TweenImplements implements TweenAccessor<Component> {
     @Override
 
     public int getValues(Component target, int tweenType, float[] returnValues) {
-        /**
+        /*
          *对对象的不同属性提供设置值和获取值的方法
          *target是要改变属性的对象
          *tweenType自己定义的是改变属性的类型
